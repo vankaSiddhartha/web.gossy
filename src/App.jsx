@@ -15,6 +15,7 @@ import Terms from './Components/Terms'
 import Policy from './Components/Policy'
 import Careers from './Components/Careers'
 import PostDetail from './Components/PostDetail'
+import Blogs from './Components/Blogs'
 
 
 
@@ -54,6 +55,9 @@ function App() {
         } />
                   <Route path='/careers' element ={
                   <Careers/>
+        } />
+                   <Route path='/blogs' element ={
+                     <Blogs/>
         } />
       </Routes>
     </Router>

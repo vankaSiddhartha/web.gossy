@@ -5,6 +5,7 @@ import {
   useDisclosure,
   Drawer,
   DrawerOverlay,
+   Stack,
   DrawerContent,
   DrawerCloseButton,
   Icon,
@@ -14,7 +15,7 @@ import {
   Box,
 } from '@chakra-ui/react';
 import { useColorModeValue } from '@chakra-ui/react';
-
+import { Link } from 'react-router-dom';
 import { Text } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import logo from '/images/logoFinal.png';
@@ -27,7 +28,14 @@ import {
   FiMenu,
 } from 'react-icons/fi'
 
+const ListHeader = ({ children }) => {
 
+  return (
+    <Text fontWeight={'500'} fontSize={'lg'} mb={2}>
+      {children}
+    </Text>
+  )
+}
 export default function Navigation() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -72,22 +80,36 @@ export default function Navigation() {
         </Button>
       </Flex>
 
-      {/* Drawer for mobile view */}
-<Drawer placement="left" onClose={onClose} isOpen={isOpen} >
-        <DrawerOverlay>
-          <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerHeader bg={'yellow.400'}>Menu</DrawerHeader>
-            <DrawerBody bg={'yellow.400'}>
-              {/* Replace these Box components with your actual navigation links */}
-               <Text fontWeight="bold" fontSize="xl">
-  I'm too lazy to code the menu section, but you can find all the website links at the bottom. I love you
-</Text>
-          
-            </DrawerBody>
-          </DrawerContent>
-        </DrawerOverlay>
-      </Drawer>
+ <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
+  <DrawerOverlay>
+    <DrawerContent>
+      <DrawerCloseButton />
+      <DrawerHeader bg={'yellow.400'}>Menu</DrawerHeader>
+      <DrawerBody bg={'yellow.400'}>
+        {/* Replace these Box components with your actual navigation links */}
+       
+        <Stack align={'flex-start'}>
+  <ListHeader>Support</ListHeader>
+  <Link to="/help-center">Help Center</Link>
+  <Link to="/terms-of-service">Terms of Service</Link>
+  <Link to="/privacy-policy">Privacy Policy</Link>
+   <ListHeader>Company</ListHeader>
+  <Link to="/about">About</Link>
+    <Link to={"/blogs"}>Company Blogs</Link>
+  <Link to="/careers">Careers</Link>
+  <Link to="/contact">Contact</Link>
+    <ListHeader>Follow Us</ListHeader>
+  <a href="https://www.twitter.com">Twitter</a>
+  <a href="https://www.instagram.com">Instagram</a>
+  <a href="https://www.linkedin.com">LinkedIn</a>
+
+</Stack>
+        
+      </DrawerBody>
+    </DrawerContent>
+  </DrawerOverlay>
+</Drawer>
+
     </>
   );
 }
