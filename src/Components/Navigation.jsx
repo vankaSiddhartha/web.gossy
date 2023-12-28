@@ -68,7 +68,7 @@ export default function Navigation() {
           _hover={{ bg: 'gray.800' }}
           rounded="full"
         >
-          Download
+          Beta Tester
         </Button>
       </Flex>
 
