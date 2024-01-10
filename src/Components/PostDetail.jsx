@@ -28,7 +28,7 @@ export default function PostDetail() {
            <Flex p={8} align={'center'} justify={'center'} flex={1}>
           <Stack spacing={6} w={'full'} maxW={'lg'}>
             <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
-              <Text as={'span'} position={'relative'}>
+              <Text as={'span'} >
                 Like, comment, and view posts anonymously.
               </Text>
               <br />{' '}

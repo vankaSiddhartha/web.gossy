@@ -19,7 +19,7 @@ export default function Post() {
         <Flex justifyContent="center" alignItems="center" flexDir={{ base: 'column-reverse', md: 'row' }}>
           <Stack p={8} flex={1}>
             <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
-              <Text as={'span'} position={'relative'}>
+              <Text as={'span'} >
               Post anonymously and confess secrets
               </Text>
               <br />

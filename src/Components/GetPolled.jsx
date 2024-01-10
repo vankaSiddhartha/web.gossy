@@ -18,7 +18,7 @@ export default function GetPolled() {
         <Flex justifyContent="center" alignItems="center" flexDir={{ base: 'column-reverse', md: 'row' }}>
           <Stack p={8} flex={1}>
             <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
-              <Text as={'span'} position={'relative'}>
+              <Text as={'span'} >
                 Getting polled by Friends
               </Text>
               <br />

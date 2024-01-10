@@ -26,9 +26,48 @@ import {
   MdFacebook,
   MdOutlineEmail,
 } from 'react-icons/md'
-import { BsGithub, BsDiscord, BsPerson } from 'react-icons/bs'
+import swal from 'sweetalert';
+import { BsInstagram, BsTwitterX, BsLinkedin,BsPerson } from 'react-icons/bs'
+import { useState } from 'react'
 
 export default function Contact() {
+
+  const[name,setname] = useState('')
+  const[mail,setMail] = useState('')
+  const[message,setMessage] = useState('')
+
+  function sendData(){
+    if(name.trim()===""&&mail.trim()===""&&message.trim()===""){
+      swal("Empty fields are not allowed", "Please fill the inputfileds", "error");
+     return
+    }
+    const postData = {
+  name: name,
+  email: mail,
+  message:message,
+  type:"Contact"
+
+};
+
+fetch('https://gossy-fbbcf-default-rtdb.asia-southeast1.firebasedatabase.app/response.json', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(postData),
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    console.log('Data has been sent to Firebase!');
+    swal("Good job!", "I will inform you with in 1 day", "success");
+  })
+  .catch(error => {
+    
+      swal("Error", error, "error");
+  });
+  }
   return (
     <Container bg="#9DC4FB" maxW="full" mt={0} centerContent overflow="hidden">
       <Flex>
@@ -86,28 +125,30 @@ export default function Contact() {
                     px={5}
                     alignItems="flex-start">
                     <IconButton
-                      aria-label="facebook"
+                      aria-label="Instagram"
+                      variant="ghost"
+                      size="lg"
+                       onClick={()=>window.open('https://www.instagram.com/gossylovesyou/', '_blank')}
+                      isRound={true}
+                      _hover={{ bg: '#0D74FF' }}
+                      icon={<BsInstagram size="28px" style={{ color: 'white' }}></BsInstagram> }/>
+                    <IconButton
+                      aria-label="X"
                       variant="ghost"
                       size="lg"
                       isRound={true}
+                         onClick={()=>window.open('https://twitter.com/gossylovesyou', '_blank')}
                       _hover={{ bg: '#0D74FF' }}
-                      icon={<MdFacebook size="28px" />}
+                      icon={<BsTwitterX size="28px" style={{ color: 'white' }}></BsTwitterX>}
                     />
                     <IconButton
-                      aria-label="github"
+                      aria-label="Linkedin"
                       variant="ghost"
                       size="lg"
                       isRound={true}
                       _hover={{ bg: '#0D74FF' }}
-                      icon={<BsGithub size="28px" />}
-                    />
-                    <IconButton
-                      aria-label="discord"
-                      variant="ghost"
-                      size="lg"
-                      isRound={true}
-                      _hover={{ bg: '#0D74FF' }}
-                      icon={<BsDiscord size="28px" />}
+                      onClick={()=>window.open('https://www.linkedin.com/company/gossy-the-perfect-social-app/about/?viewAsMember=true', '_blank')}
+                      icon={<BsLinkedin size="28px" style={{ color: 'white' }}></BsLinkedin>}
                     />
                   </HStack>
                 </Box>
@@ -122,7 +163,7 @@ export default function Contact() {
                           <InputLeftElement pointerEvents="none">
                             <BsPerson color="gray.800" />
                           </InputLeftElement>
-                          <Input type="text" size="md" />
+                          <Input type="text" size="md" onChange={(e)=>{setname(e.target.value)}}/>
                         </InputGroup>
                       </FormControl>
                       <FormControl id="name">
@@ -131,7 +172,7 @@ export default function Contact() {
                           <InputLeftElement pointerEvents="none">
                             <MdOutlineEmail color="gray.800" />
                           </InputLeftElement>
-                          <Input type="text" size="md" />
+                          <Input type="text" size="md" onChange={(e)=>{setMail(e.target.value)}} />
                         </InputGroup>
                       </FormControl>
                       <FormControl id="name">
@@ -141,11 +182,12 @@ export default function Contact() {
                           _hover={{
                             borderRadius: 'gray.300',
                           }}
+                          onChange={(e)=>{setMessage(e.target.value)}}
                           placeholder="message"
                         />
                       </FormControl>
                       <FormControl id="name" float="right">
-                        <Button variant="solid" bg="#0D74FF" color="white" _hover={{}}>
+                        <Button variant="solid" bg="#0D74FF" color="white" _hover={{}} onClick={sendData}>
                           Send Message
                         </Button>
                       </FormControl>

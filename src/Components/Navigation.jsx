@@ -15,10 +15,11 @@ import {
   Box,
 } from '@chakra-ui/react';
 import { useColorModeValue } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigation } from 'react-router-dom';
 import { Text } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import logo from '/images/logoFinal.png';
+import { useNavigate } from 'react-router-dom';
 import {
   FiHome,
   FiTrendingUp,
@@ -37,6 +38,11 @@ const ListHeader = ({ children }) => {
   )
 }
 export default function Navigation() {
+  const navigate = useNavigate()
+   function click(){
+        
+     navigate("/contact")
+   }
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const flexStyles = {
@@ -73,6 +79,7 @@ export default function Navigation() {
           display={{ base: 'none', md: 'inline-flex' }}
           bg="black"
           color="white"
+          onClick={click}
           _hover={{ bg: 'gray.800' }}
           rounded="full"
         >

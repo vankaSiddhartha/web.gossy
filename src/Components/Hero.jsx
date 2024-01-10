@@ -9,8 +9,16 @@ import {
 import Navigation from './Navigation';
 import hand from '/images/hand.png';
 import PollView from './PollView';
-
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 export default function Hero() {
+ const navigat = useNavigate();
+  function navigate(){
+    
+     navigat("/contact")
+     
+
+  }
   return (
     <>
      
@@ -20,7 +28,7 @@ export default function Hero() {
         <Flex    marginLeft={{ base: 0, md: 60 }}  justifyContent="center" alignItems="center" flexDir={{ base: 'column-reverse', md: 'row' } }>
           <Stack p={8} flex={1}>
             <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
-              <Text as={'span'} position={'relative'}>
+              <Text as={'span'}>
                 A new-age pseudonymous social network
               </Text>
               <br />
@@ -36,12 +44,13 @@ export default function Hero() {
                 rounded={'full'}
                 bg={'blue.400'}
                 color={'white'}
+                onClick={navigate}
                 _hover={{
                   bg: 'blue.500',
                 }}>
                 Pre-register
               </Button>
-              <Button rounded={'full'}>Became beta tester</Button>
+              <Button rounded={'full'} onClick={navigate}>Became beta tester</Button>
             </Stack>
           </Stack>
           <Flex flex={1} justifyContent="center" alignItems="center">

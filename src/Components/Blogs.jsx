@@ -81,6 +81,7 @@ From navigating college life to expressing your thoughts freely, Gossy is your g
         </Text>
          <BlogAuthor name="Vanka Siddhartha" date={new Date('2023-12-28T19:01:27Z')} />
       </VStack>
+         
     </Container>
   )
 }

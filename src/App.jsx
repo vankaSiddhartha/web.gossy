@@ -1,6 +1,4 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import Hero from './Components/Hero'
 import Navigation from './Components/Navigation'
 import PollView from './Components/PollView'
@@ -24,7 +22,9 @@ function App() {
 
   return (
  <Router>
+ 
       <Routes>
+      
         <Route path="/" element={
          <>
          <Navigation/>
