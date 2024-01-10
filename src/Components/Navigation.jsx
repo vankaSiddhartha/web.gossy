@@ -106,9 +106,9 @@ export default function Navigation() {
   <Link to="/careers">Careers</Link>
   <Link to="/contact">Contact</Link>
     <ListHeader>Follow Us</ListHeader>
-  <a href="https://www.twitter.com">Twitter</a>
-  <a href="https://www.instagram.com">Instagram</a>
-  <a href="https://www.linkedin.com">LinkedIn</a>
+  <a href="https://twitter.com/gossylovesyou">Twitter</a>
+  <a href="https://www.instagram.com/gossylovesyou/">Instagram</a>
+  <a href="https://www.linkedin.com/company/gossy-the-perfect-social-app/about/?viewAsMember=true">LinkedIn</a>
 
 </Stack>
         
